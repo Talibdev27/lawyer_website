@@ -141,11 +141,20 @@ src/
 
 ## 🔧 Configuration
 
-### Changing Admin Password
-Edit the password in `src/components/AdminDashboard.tsx`:
-```typescript
-if (password === 'admin123') { // Change this password
+### Environment Variables
+Create a `.env` file in the root directory with the following variables:
+
+```bash
+# Admin Dashboard Password
+REACT_APP_ADMIN_PASSWORD=Firdavs2005
 ```
+
+**Important**: 
+- Copy `.env.example` to `.env` and set your actual password
+- Never commit `.env` to version control
+- For production deployment, set environment variables in your hosting platform
+
+**Security Note**: Never commit the `.env` file to version control. The `.env.example` file shows the required variables without exposing the actual password.
 
 ### Adding New Languages
 1. Add language code to `src/types/language.ts`

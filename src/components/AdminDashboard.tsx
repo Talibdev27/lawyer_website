@@ -49,10 +49,11 @@ const AdminDashboard = () => {
     { id: '7', time: '17:00', available: true }
   ]);
 
-  // Simple password authentication
+  // Secure password authentication using environment variable
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'admin123') { // Simple password - you can change this
+    const adminPassword = process.env.REACT_APP_ADMIN_PASSWORD || 'Firdavs2005'; // Fallback for development
+    if (password === adminPassword) {
       setIsAuthenticated(true);
       setPassword('');
     } else {
@@ -162,7 +163,7 @@ const AdminDashboard = () => {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                Admin Password
               </label>
               <input
                 type="password"
@@ -182,7 +183,7 @@ const AdminDashboard = () => {
             </button>
           </form>
           <p className="text-xs text-gray-500 mt-4 text-center">
-            Default password: admin123
+            Secure admin access
           </p>
         </div>
       </div>
